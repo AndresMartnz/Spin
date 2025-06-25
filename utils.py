@@ -106,4 +106,17 @@ def plot_results(filename):
     ax.set_ylabel(r"$\delta\omega_r/2\pi$ (kHz)")
     ax.set_xlabel(r"$t_{\mathrm{pump}}$ (ns)")
 
+    # * We save the PINN loss history
+    ruta_loss = f"RK"
+
+    with open(ruta_loss, "w") as archivo:
+        for (
+            valor1,
+            valor2,
+        ) in zip(
+            tp_list,
+            shifts,
+        ):
+            archivo.write(f"{valor1}\t{valor2}\n")
+
     plt.show()
