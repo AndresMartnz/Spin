@@ -3,7 +3,7 @@
 
 from eom import solve_dynamics
 from utils import prepare_results_file, plot_results
-from model_parameters import *
+from test1 import *
 
 ###################### Dictionary with all relevant hyperparams ######################
 

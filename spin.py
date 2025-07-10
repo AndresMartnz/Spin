@@ -9,19 +9,19 @@ from keras.optimizers import Adam
 from functions import *
 from red_neuronal import *
 from eom import *
-from model_parameters import *
+from test1 import *
 from pulse_construction import *
 
 
 # *We set the inicial conditions
-x0 = [0, 0, 0, 0, 0, 0, -1, -1]
+x0 = [0, 0, 0, 0, -1]
 
 # * We generate the values of z within the domain.
 N_train_max = 400
-tmax = 400
+tmax = 800
 
 # * It gives the number of "chichetas" used
-N_intervalos = 1
+N_intervalos = 4
 
 salto = int(N_train_max / N_intervalos)
 salto_t = tmax / N_intervalos
@@ -48,15 +48,14 @@ for i in range(N_train_max):
     dist_linecoup = prepare_linecoupling_dist(r_line, p_square_line)
     line_couplings.append(dist_linecoup * 2 * np.pi * 28.0)
 
-
 # * Input and output neurons (from the data)
 input_neurons = 1
 output_neurons = 3 * N_total + 2
 
 # * Hiperparameters
 batch_size = 1
-epochs = 1
-lr = 0.00001
+epochs = 20000
+lr = 0.000001
 
 # * Stops after certain epochs without improving and safe the best weight
 #! If the simulation ends normally instead of by this callback, the program will take last weights not best
@@ -152,20 +151,18 @@ for l in pos_DBC:
 ruta_chinchetas = f"DBC/Ninter={N_intervalos}_t={tmax}_lr={lr}.txt"
 
 with open(ruta_chinchetas, "w") as archivo:
-    for valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8, valor9 in zip(
+    for valor1, valor2, valor3, valor4, valor5, valor6 in zip(
         chincheta_DBC,
         chinchetas[:, 0],
         chinchetas[:, 1],
         chinchetas[:, 2],
         chinchetas[:, 3],
         chinchetas[:, 4],
-        chinchetas[:, 5],
-        chinchetas[:, 6],
-        chinchetas[:, 7],
+        # chinchetas[:, 5],
+        # chinchetas[:, 6],
+        # chinchetas[:, 7],
     ):
-        archivo.write(
-            f"{valor1}\t{valor2}\t{valor3}\t{valor4}\t{valor5}\t{valor6}\t{valor7}\t{valor8}\t{valor9}\n"
-        )
+        archivo.write(f"{valor1}\t{valor2}\t{valor3}\t{valor4}\t{valor5}\t{valor6}\n")
 
 
 # fig, ax = plt.subplots(dpi=100)
