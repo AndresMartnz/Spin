@@ -9,16 +9,16 @@ from keras.optimizers import Adam
 from functions import *
 from red_neuronal import *
 from eom import *
-from test1 import *
+from model_parameters import *
 from pulse_construction import *
 
 
 # *We set the inicial conditions
-x0 = [0, 0, 0, 0, -1]
+x0 = [0, 0, 0, 0, 0, 0, -1, -1]
 
 # * We generate the values of z within the domain.
-N_train_max = 400
-tmax = 800
+N_train_max = 80
+tmax = 1000
 
 # * It gives the number of "chichetas" used
 N_intervalos = 4
@@ -54,8 +54,8 @@ output_neurons = 3 * N_total + 2
 
 # * Hiperparameters
 batch_size = 1
-epochs = 20000
-lr = 0.000001
+epochs = 5000
+lr = 0.00001
 
 # * Stops after certain epochs without improving and safe the best weight
 #! If the simulation ends normally instead of by this callback, the program will take last weights not best
