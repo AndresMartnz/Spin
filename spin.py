@@ -17,11 +17,11 @@ from pulse_construction import *
 x0 = [0, 0, 0, 0, 0, 0, -1, -1]
 
 # * We generate the values of z within the domain.
-N_train_max = 80
+N_train_max = 500
 tmax = 1000
 
 # * It gives the number of "chichetas" used
-N_intervalos = 4
+N_intervalos = 8
 
 salto = int(N_train_max / N_intervalos)
 salto_t = tmax / N_intervalos
