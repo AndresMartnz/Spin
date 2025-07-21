@@ -48,6 +48,7 @@ for i in range(N_train_max):
     dist_linecoup = prepare_linecoupling_dist(r_line, p_square_line)
     line_couplings.append(dist_linecoup * 2 * np.pi * 28.0)
 
+
 # * Input and output neurons (from the data)
 input_neurons = 1
 output_neurons = 3 * N_total + 2
@@ -90,7 +91,7 @@ for i in range(N_intervalos):
     metrics = tf.keras.metrics.MeanSquaredError()
     optimizer = Adam(learning_rate=lr)  # standart 0.00001
 
-    model.compile(loss=loss, optimizer=optimizer, metrics=metrics, run_eagerly=False)
+    model.compile(loss=loss, optimizer=optimizer, metrics=metrics, run_eagerly=True)
     model.summary()
 
     N_train = N_train + salto
